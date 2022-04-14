@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="copyright" content="MACode ID, https://macodeid.com">
+
+  <title>Healthyway</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/vendor/animate/animate.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.css')}}">
+
+  <link rel="stylesheet" href="{{url_for('static',filename='assets/css/maicons.css')}}">
+
+  <link rel="stylesheet" href="{{url_for('static',filename='assets/vendor/owl-carousel/css/owl.carousel.css')}}">
+
+  <link rel="stylesheet" href="{{url_for('static',filename='assets/css/theme.css')}}">
+
+
+</head>
+
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-float">
+      <div class="container">
+        <a href={{url_for('index')}} class="navbar-brand">Healthy<span class="text-primary">way</span></a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+<!--<h1>{{prediction}}</h1>-->
+        <div class="navbar-collapse collapse" id="navbarContent">
+
+
+          <div class="ml-auto">
+                      <ul class="navbar-nav ml-lg-4 pt-3 pt-lg-0">
+              <li class="nav-item active">
+                <a href={{url_for('index')}} class="nav-link">Home</a>
+              </li>
+<li class="nav-item ">
+                <a href={{url_for('about')}} class="nav-link">About us</a>
+              </li>
+
+
+              <li class="nav-item">
+                <a href={{url_for('healthcheck')}} class="nav-link">Healtyway</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+  <main>
+    <div class="page-section">
+      <div class="container">
+          {% if prediction == 0 %}
+        <h3 class="text-center" style="color:#6c55f9;font-weight:700;"> <span style="color:#000">You Are  </span> Not Healthy</h3>
+        {% else %}
+                <h2  class="text-center" style="color:#6c55f9;font-weight:700;"><span style="color:#000">You Are  </span>   Healthy</h2>
+        {% endif %}
+
+
+
+
+
+
+
+<br/>
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-3 text-center">
+          <h5 style="font-weight:700">BMI </h5>
+            <p style="color:#6c55f9">{{BMI}}</p>
+          </div>
+              <div class="col-lg-3 text-center">
+          <h5 style="font-weight:700">Step Count </h5>
+            <p style="color:#6c55f9">{{count}} Steps/Day</p>
+          </div>
+          <div class="col-lg-3 text-center">
+          <h5 style="font-weight:700">Screen Time </h5>
+            <p style="color:#6c55f9">{{screentime}}hr</p>
+          </div>
+          <div class="col-lg-3 text-center">
+            <h5 style="font-weight:700">Weight
+                {% if category == "Overweight" %}
+                <span class ="text-danger">({{category}})</span>
+             {% else %}
+                <span class ="text-success">({{category}})</span>
+            {% endif %}
+            </h5>
+            <p style="color:#6c55f9">{{weight}}kg</p>
+          </div>
+
+          <div class="col-lg-6 mt-5">
+            <img src="{{url_for('static',filename='assets/img/gabin-vallet-J154nEkpzlQ-unsplash.jpg')}}" width="80%" alt="">
+          </div>
+          <div class="col-lg-6">
+            {% if category == "Overweight" %}
+            <h3 style="font-weight:700">Risk's of being <span style="color:#6c55f9">{{category}}</span></h3>
+            <ul>
+              <li><a href="#">Type 2 diabetes</a></li>
+              <li><a href="#">High blood pressure</a></li>
+              <li><a href="#">Heart disease</a></li>
+              <li><a href="#">Stroke</a></li>
+              <li><a href="#">Sleep apnea</a></li>
+              <li><a href="#">Metabolic syndrome</a></li>
+            </ul>
+
+
+          {% elif  category == "Underweight" %}
+            <h3>Risk's of being {{category}}</h3>
+            <ul>
+              <li><a href="#">Osteoporosis</a></li>
+              <li><a href="#">Skin, hair, or teeth problems</a></li>
+              <li><a href="#">Getting sick frequently</a></li>
+              <li><a href="#">Feeling tired all the time</a></li>
+              <li><a href="#">Premature births</a></li>
+              <li><a href="#">Slow or impaired growth</a></li>
+            </ul>
+
+
+          {% endif %}
+                        </div>
+
+      </div>
+
+        <hr>
+            {% if category == "Underweight" %}
+
+          <h3 style="color:#6c55f9;font-weight:700">Suggestions</h3>
+            <ul>
+              <li><span style="font-weight:700">Adding snacks:</span> High-protein and whole-grain carbohydrate snacks can help a person gain weight. Examples include peanut butter crackers, protein bars, trail mix, pita chips and hummus, or a handful of almonds.</li>
+            </ul>
+            <ul>
+              <li><span style="font-weight:700">Eating several small meals a day:</span>  Sometimes a person may be underweight because they cannot tolerate eating large meals. Instead, a person can eat several small meals throughout the day.</li>
+            </ul>
+        <ul>
+              <li><span style="font-weight:700">Incorporating additional foods:</span>   A person can add calorie-dense food sources to their existing diet, such as putting slivered almonds on top of cereal or yogurt, sunflower or chia seeds on a salad or soup, or nut butter on whole-grain toast.</li>
+            </ul>
+        <ul>
+              <li><span style="font-weight:700">Avoiding empty calories:</span> Eating high-calorie foods may cause a person to gain weight, but they also have excess fats that could affect a person’s heart and blood vessels. A person should avoid foods that are high in sugar and salt. </li>
+            </ul>
+
+                  {% elif  category == "Overweight" %}
+  <h3 style="color:#6c55f9;font-weight:700">Suggestions</h3>
+            <ul>
+              <li><span style="font-weight:700">Skip the sugary drinks:</span> Sugary drinks, such as soda, juice, sweet tea, and sports drinks, add extra calories with little or no nutritional value. People who regularly drink sugary beverages are more likely to be overweight. Choose water or low-fat milk most of the time.</li>
+            </ul>
+            <ul>
+              <li><span style="font-weight:700">Exercise:</span> Regular physical activity burns calories and builds muscle — both of which help you look and feel good and can help keep weight off. Walking the family dog, cycling to school, and doing other things that increase your daily level of activity can make a difference. If you want to burn more calories, increase the intensity of your workout and add some strength exercises to build muscle. </li>
+            </ul>
+        <ul>
+              <li><span style="font-weight:700">Reduce screen time:</span> People who spend a lot of time in front of screens are more likely to be overweight. Set reasonable limits on the amount of time you spend watching TV, playing video games, and using computers, phones, and tablets not related to school work. Turn off all screens at least an hour before bedtime so you can get enough sleep.  </li>
+            </ul>
+        <ul>
+              <li><span style="font-weight:700">Watch portion sizes:</span> Big portions pile on extra calories that can cause weight gain. Choose smaller portions, especially when eating high-calorie snacks. When eating away from home, try sharing an entree or save half your meal to take home. </li>
+            </ul>
+ <ul>
+              <li><span style="font-weight:700">Eat 5 servings of fruits and veggies a day:</span> Fruits and veggies are about more than just vitamins and minerals. They're also packed with fiber, which means they fill you up. And when you fill up on fruits and veggies, you're less likely to overeat. </li>
+            </ul>
+           {% endif %}
+
+{% if screentime > 4 %}
+         <h3 style="color:#6c55f9;font-weight:700">The effects of screen time on your health</h3>
+            <ul>
+              <li><span style="font-weight:700">Obesity:</span>  Too much time engaging in a sedentary activity, such as playing video games or watching TV, can be a risk factor for obesity. Heart health is also impacted and can lead to a higher risk of diabetes, increased blood pressure or cholesterol.</li>
+            </ul>
+             <ul>
+              <li><span style="font-weight:700">Sleep problems:</span> The light emitted from electronic devices interferes with the brain’s sleep cycle and can prevent getting a good night’s sleep. To sleep more soundly, keep screens out of the bedroom and avoid them for at least an hour before you climb into bed. </li>
+            </ul>
+             <ul>
+              <li><span style="font-weight:700">Chronic neck and back pain:</span> Too much screen time can lead to poor posture, causing chronic neck, shoulder and back pain. Instead, take breaks from sitting to walk around, stand or stretch. Make sure your chair provides ample back support and try to keep the device at eye level. </li>
+            </ul>
+             <ul>
+              <li><span style="font-weight:700">Depression and anxiety:</span>  All the time spent in front of screens can negatively affect your mental and emotional wellbeing. Experts suggest that higher screen time and depression could be connected along with an increase in suicidal behaviors and lower one’s ability to read emotions in general.</li>
+            </ul>
+
+
+          <h3 style="color:#6c55f9;font-weight:700">Tips to reduce screen time</h3>
+            <ul>
+              <li><span style="font-weight:700">Model healthy electronic use:</span>  Parents are role models for their kids. The next time you binge-watch your favorite Netflix series, remember that you are setting an example for your children. Keeping the TV on in the background or scrolling through your phone when you have a spare minute may not be modeling the behavior you hope to see in your kids.</li>
+            </ul>
+             <ul>
+              <li><span style="font-weight:700">Set aside time to unplug:</span> Choose a time for your whole family to unplug from the phone, TV and computer. When you all agree to put down your devices, it gives your family the chance to spend quality time together. </li>
+            </ul>
+             <ul>
+              <li><span style="font-weight:700">Use parental controls:</span> There are tools you can use to filter or block unwanted content. You can even set daily screen time limits that can lock your children out of apps after they have reached a set amount of time. </li>
+            </ul>
+             <ul>
+              <li><span style="font-weight:700">Encourage other activities:</span>  These days it’s easy for kids to become reliant on electronics for entertainment. Instead, encourage them to get involved in activities that don’t require a screen like playing outside, reading a book or playing a board game.</li>
+            </ul>
+    <ul>
+              <li><span style="font-weight:700">Keep bedrooms screen-free:</span>  You may want to consider making it a rule that electronic devices are not allowed in the bedroom. This also includes tablets and other handheld devices that your kids may be tempted to use at night, which could interfere with their sleep.</li>
+            </ul>
+
+           {% endif %}
+
+         </div>
+    </div>
+
+  </main>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-3 py-3">
+          <h3>Healthy<span class="text-primary">way</span></h3>
+
+          <p><a href="mailto:chilwarwarsuyash2@mail.com" > chilwarwarsuyash2@mail.com</a></p>
+                    <p><a href="mailto:kartikchauhan563@mail.com" >kartikchauhan563@mail.com</a></p>
+
+                    <p><a href="mailto:vanditajoshi194@mail.com" > vanditajoshi194@mail.com</a></p>
+          <p><a href="mailto:gauripanpaliya3@mail.com" > gauripanpaliya3@mail.com</a></p>
+
+
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Quick Links</h5>
+          <ul class="footer-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href={{url_for('healthcheck')}}>Healthway</a></li>
+
+          </ul>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>About Us</h5>
+          <ul class="footer-menu">
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+
+
+<!--          <div class="sosmed-button mt-4">-->
+<!--            <a href="#"><span class="mai-logo-facebook-f"></span></a>-->
+<!--            <a href="#"><span class="mai-logo-twitter"></span></a>-->
+<!--            <a href="#"><span class="mai-logo-google"></span></a>-->
+<!--            <a href="#"><span class="mai-logo-linkedin"></span></a>-->
+<!--          </div>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 py-2 text-center">
+<!--          <p id="copyright">&copy; 2022 . All rights reserved</p>-->
+        </div>
+      </div>
+<!--        <div class="col-sm-6 py-2 text-right">-->
+<!--          <div class="d-inline-block px-3">-->
+<!--            <a href="#">Privacy</a>-->
+<!--          </div>-->
+<!--          <div class="d-inline-block px-3">-->
+<!--            <a href="#">Contact Us</a>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div> <!-- .container -->
+  </footer> <!-- .page-footer -->
+
+  <script src="{{url_for('static',filename='chart.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/js/jquery-3.5.1.min.js')}}"></script>
+
+  <script src="{{url_for('static',filename='assets/js/bootstrap.bundle.min.js')}}"></script>
+
+  <script src="{{url_for('static',filename='assets/vendor/wow/wow.min.js')}}"></script>
+
+  <script src="{{url_for('static',filename='assets/vendor/owl-carousel/js/owl.carousel.min.js')}}"></script>
+
+  <script src="{{url_for('static',filename='assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
+
+  <script src="{{url_for('static',filename='assets/vendor/animateNumber/jquery.animateNumber.min.js')}}"></script>
+
+  <script src="{{url_for('static',filename='assets/js/google-maps.js')}}"></script>
+
+  <script src="{{url_for('static',filename='assets/js/theme.js')}}"></script>
+
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script> -->
+  <script>
+    var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+    var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+    
+    new Chart("linechart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,1.0)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          yAxes: [{ticks: {min: 6, max:16}}],
+        }
+      }
+    });
+    </script>
+    <script>
+        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+        var yValues = [55, 49, 44, 24, 15];
+        var barColors = [
+          "#b91d47",
+          "#00aba9",
+          "#2b5797",
+          "#e8c3b9",
+          "#1e7145"
+        ];
+        
+        new Chart("doughnut", {
+          type: "doughnut",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: "World Wide Wine Production 2018"
+            }
+          }
+        });
+        </script>
+        
+<script>
+    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+    var yValues = [55, 49, 44, 24, 15];
+    var barColors = ["red", "green","blue","orange","brown"];
+    
+    new Chart("barchart", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "World Wine Production 2018"
+        }
+      }
+    });
+    </script>
+</body>
+
+</html>
